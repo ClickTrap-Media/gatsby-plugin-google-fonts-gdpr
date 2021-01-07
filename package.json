@@ -1,7 +1,7 @@
 {
-    "name": "gatsby-plugin-klaro",
+    "name": "gatsby-plugin-klaro-google-fonts",
     "version": "1.0.0",
-    "description": "Bring Google Fonts to Gatsby and make it useable with  CMPs",
+    "description": "Bring Google Fonts to Gatsby and make it useable with the Klaro CMP",
     "keywords": [
         "gatsby",
         "gatsby-plugin",
@@ -12,13 +12,13 @@
     ],
     "author": "ClickTrap Media <contact@clicktrap-media.de>",
     "license": "MIT",
-    "homepage": "https://github.com/ClickTrap-Media/gatsby-plugin-google-fonts-gdpr",
+    "homepage": "https://github.com/ClickTrap-Media/gatsby-plugin-klaro-google-fonts",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ClickTrap-Media/gatsby-plugin-google-fonts-gdpr.git"
+        "url": "git+https://github.com/ClickTrap-Media/gatsby-plugin-klaro-google-fonts.git"
     },
     "bugs": {
-        "url": "https://github.com/ClickTrap-Media/gatsby-plugin-google-fonts-gdpr/issues"
+        "url": "https://github.com/ClickTrap-Media/gatsby-plugin-klaro-google-fonts/issues"
     },
     "main": "index.js",
     "private": false,
