@@ -1,6 +1,16 @@
 import React from "react";
 
 /**
+ * The default type for the inserted link when no specific type is given
+ */
+const PLACEHOLDER_LINK_TYPE = "text/plain";
+
+/**
+ * The type that is set to load the font link
+ */
+const ACTIVE_LINK_TYPE = "text/css";
+
+/**
  * Prepare the string that contains the family parameter value
  * of the request send to the Google Font API
  *
@@ -43,7 +53,28 @@ exports.onRenderBody = function ({ setHeadComponents }, options) {
     getFonts(options.fonts) +
     getDisplay(options);
 
+  // Just add a normal link when Klaro compatibility is disabled
+  if (options.disableKlaroCompatibility) {
+    return setHeadComponents([
+      <link
+        key="google-fonts"
+        href={link}
+        rel="stylesheet"
+        type={ACTIVE_LINK_TYPE}
+      />,
+    ]);
+  }
+
+  // Add the Klaro compatible link
+  const klaroName = options.klaroName ? options.klaroName : "googlefonts";
   return setHeadComponents([
-    <link key="google-fonts" href={link} rel="stylesheet" type="text/css" />,
+    <link
+      key="google-fonts"
+      rel="stylesheet"
+      type={PLACEHOLDER_LINK_TYPE}
+      data-type={ACTIVE_LINK_TYPE}
+      data-href={link}
+      data-name={klaroName}
+    />,
   ]);
 };
