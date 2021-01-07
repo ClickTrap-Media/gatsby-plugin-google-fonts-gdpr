@@ -1,44 +1,49 @@
-'use strict'
+import React from "react";
 
-var _react = require('react')
-
-var _react2 = _interopRequireDefault(_react)
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj }
+/**
+ * Prepare the string that contains the family parameter value
+ * of the request send to the Google Font API
+ *
+ * @param {string[]} fonts Array that contains the fonts to load
+ */
+function getFonts(fonts) {
+  return fonts.map(format).join("|").replace(/ /g, "+");
 }
 
-var format = function format(string) {
-  return string
-    .split(' ')
-    .map(function(s) {
-      return s.replace(/^\w/, function(s) {
-        return s.toUpperCase()
-      })
+/**
+ * Format the font parameter to match the expected format
+ * of the Google Fonts API
+ *
+ * @param {string} fontParameter A font string to format
+ */
+function format(fontParameter) {
+  return fontParameter
+    .split(" ")
+    .map(function (s) {
+      return s.replace(/^\w/, function (s) {
+        return s.toUpperCase();
+      });
     })
-    .join(' ')
+    .join(" ");
 }
 
-var getFonts = function getFonts(options) {
-  return options.fonts
-    .map(format)
-    .join('|')
-    .replace(/ /g, '+')
+/**
+ * Check if display is not undefined and return its value.
+ * Will return an empty string if display is not set.
+ *
+ * @param {string} display The option set for display
+ */
+function getDisplay(display) {
+  return display ? "&display=" + display : "";
 }
 
-function getDisplay(options) {
-  return options.display ? '&display=' + options.display : ''
-}
+exports.onRenderBody = function ({ setHeadComponents }, options) {
+  const link =
+    "https://fonts.googleapis.com/css?family=" +
+    getFonts(options.fonts) +
+    getDisplay(options);
 
-exports.onRenderBody = function(_ref, options) {
-  var setHeadComponents = _ref.setHeadComponents
-
-  var link = 'https://fonts.googleapis.com/css?family=' + getFonts(options) + getDisplay(options)
-  setHeadComponents([
-    _react2.default.createElement('link', {
-      key: 'fonts',
-      href: link,
-      rel: 'stylesheet'
-    })
-  ])
-}
+  return setHeadComponents([
+    <link key="google-fonts" href={link} rel="stylesheet" type="text/css" />,
+  ]);
+};
