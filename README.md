@@ -69,8 +69,8 @@ Example value: "googlefonts"
 
 ## Examples of usage
 
-#### Default URL & embedded configuration example
-Usage with the default URL for Klaro and an embedded configuration:
+#### Default usage
+Default usage (Name for Klaro configuration will be `googlefonts`):
 ```javascript
 module.exports = {
     plugins: [
@@ -83,6 +83,50 @@ module.exports = {
                 `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
               ],
               display: 'swap'
+            }
+        },
+        ...
+    ],
+};
+```
+
+#### Disable Klaro compatibility
+Disable Klaro compatibility (e. g. for development):
+```javascript
+module.exports = {
+    plugins: [
+        ...
+        {
+            resolve: "gatsby-plugin-klaro-google-fonts",
+            options: {
+              fonts: [
+                `limelight`,
+                `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
+              ],
+              display: 'swap',
+              disableKlaroCompatibility: true
+            }
+        },
+        ...
+    ],
+};
+```
+
+#### Custom service name
+Use a custom name to identify Google Fonts in your Klaro config:
+```javascript
+module.exports = {
+    plugins: [
+        ...
+        {
+            resolve: "gatsby-plugin-klaro-google-fonts",
+            options: {
+              fonts: [
+                `limelight`,
+                `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
+              ],
+              display: 'swap',
+              klaroName: "some-custom-name"
             }
         },
         ...
