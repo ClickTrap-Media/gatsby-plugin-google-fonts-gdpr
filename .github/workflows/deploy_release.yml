@@ -1,11 +1,11 @@
-# Deploy a release to npmjs.com when a push to main occurs
+# Deploy a release to npmjs.com when a push to master occurs
 name: Deploy Release
 
-# Run job on push to main
+# Run job on push to master
 on:
     push:
         branches:
-            - 'main'
+            - 'master'
 
 jobs:
   build:
