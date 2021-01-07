@@ -44,14 +44,14 @@ function format(fontParameter) {
  * @param {string} display The option set for display
  */
 function getDisplay(display) {
-  return display ? "&display=" + display : "";
+  return display !== undefined ? "&display=" + display : "";
 }
 
 exports.onRenderBody = function ({ setHeadComponents }, options) {
   const link =
     "https://fonts.googleapis.com/css?family=" +
     getFonts(options.fonts) +
-    getDisplay(options);
+    getDisplay(options.display);
 
   // Just add a normal link when Klaro compatibility is disabled
   if (options.disableKlaroCompatibility) {
