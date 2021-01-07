@@ -3,6 +3,8 @@
 ## Description
 This is a fork of [gatsby-plugin-google-fonts](https://github.com/didierfranc/gatsby-plugin-google-fonts) that aims
 to be compatible with [KIProtect Klaro](https://github.com/kiprotect/klaro).
+The plugin appends the necessary data attributes to prevent the execution of the API call until the user grants the
+necessary consent.
 
 ## How to install
 
@@ -53,6 +55,17 @@ Example value:
 Provide the `font-display` property to set on the loaded font.
 
 Example value: `"swap"`
+
+### `disableKlaroCompatibility` (optional, default: false)
+Disable Klaro compatibility and always load the stylesheets using Googles API.
+
+Example value: true
+
+### `klaroName` (optional, default: "googlefonts")
+The name that should be set for the `data-name`-attribute that Klaro uses for the configuration
+of the tag.
+
+Example value: "googlefonts"
 
 ## Examples of usage
 
