@@ -71,5 +71,3 @@ yarn-error.log
 !/gulpfile.js
 !/.eslintrc.js
 !/.prettierrc.js
-!/jest.config.js
-coverage/
