@@ -1,0 +1,86 @@
+# Deploy a release to npmjs.com when a push to main occurs
+name: Deploy Release
+
+# Run job on push to main
+on:
+    push:
+        branches:
+            - 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.15.4]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install dependencies
+      run: npm ci
+    - name: Run tests
+      run: npm run build
+
+    - name: Publish on npmjs.com
+      uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+    - name: Prepare version for tag
+      run: node -p -e '`PACKAGE_VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
+
+    - name: Push git tag to
+      uses: pkgdeps/git-tag-action@v2
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_repo: ${{ github.repository }}
+        version: ${{ env.PACKAGE_VERSION }}
+        git_commit_sha: ${{ github.sha }}
+        git_tag_prefix: "v"
+
+    - name: Changelog
+      uses: scottbrenner/generate-changelog-action@master
+      id: Changelog
+      env:
+        REPO: ${{ github.repository }}
+
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          tag_name: v${{ env.PACKAGE_VERSION }}
+          release_name: Release v${{ env.PACKAGE_VERSION }}
+          body: |
+            ${{ steps.Changelog.outputs.changelog }}
+          draft: false
+          prerelease: false
+
+    - name: Remove node_modules
+      run: rm -rf node_modules
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: output
+        path: ./
+
+    - name: Package artifact
+      run: zip -r gatsby-plugin-klaro-v${{ env.PACKAGE_VERSION }}.zip .
+
+    - name: Upload artifact
+      id: upload-release-asset
+      uses: actions/upload-release-asset@v1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./gatsby-plugin-klaro-v${{ env.PACKAGE_VERSION }}.zip
+          asset_name: gatsby-plugin-klaro-v${{ env.PACKAGE_VERSION }}.zip
+          asset_content_type: application/zip
