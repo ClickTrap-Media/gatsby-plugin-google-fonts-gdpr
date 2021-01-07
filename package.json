@@ -1,26 +1,61 @@
 {
-  "name": "gatsby-plugin-google-fonts",
-  "version": "1.0.1",
-  "description": "Bring Google Fonts to Gatsby",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/didierfranc/gatsby-plugin-google-fonts.git"
-  },
-  "keywords": [
-    "gatsby",
-    "gatsby-plugin",
-    "react",
-    "google",
-    "fonts"
-  ],
-  "author": "Didier Franc <dev@didierfranc.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/didierfranc/gatsby-plugin-google-fonts/issues"
-  },
-  "homepage": "https://github.com/didierfranc/gatsby-plugin-google-fonts#readme"
+    "name": "gatsby-plugin-klaro",
+    "version": "1.0.0",
+    "description": "Bring Google Fonts to Gatsby and make it useable with  CMPs",
+    "keywords": [
+        "gatsby",
+        "gatsby-plugin",
+        "google",
+        "fonts",
+        "cmp",
+        "gdpr"
+    ],
+    "author": "ClickTrap Media <contact@clicktrap-media.de>",
+    "license": "MIT",
+    "homepage": "https://github.com/ClickTrap-Media/gatsby-plugin-google-fonts-gdpr",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ClickTrap-Media/gatsby-plugin-google-fonts-gdpr.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ClickTrap-Media/gatsby-plugin-google-fonts-gdpr/issues"
+    },
+    "main": "index.js",
+    "private": false,
+    "engines": {
+        "node": ">=10.13.0"
+    },
+    "scripts": {
+        "build": "gulp build",
+        "buildCoverage": "gulp buildCoverage",
+        "compile": "gulp compile",
+        "clean": "gulp clean",
+        "test": "gulp test",
+        "lint": "gulp lint",
+        "gulp": "gulp"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.12.10",
+        "@babel/plugin-proposal-decorators": "^7.12.12",
+        "babel-preset-gatsby": "^0.9.1",
+        "gulp": "^4.0.2",
+        "gulp-babel": "^8.0.0",
+        "babel-eslint": "^10.1.0",
+        "babel-preset-gatsby-package": "^0.9.0",
+        "del": "^6.0.0",
+        "eslint": "^7.17.0",
+        "eslint-config-google": "^0.14.0",
+        "eslint-config-prettier": "^7.1.0",
+        "eslint-plugin-filenames": "^1.3.2",
+        "eslint-plugin-flowtype": "^5.2.0",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-react": "^7.22.0",
+        "gulp-eslint": "^6.0.0",
+        "jest": "^26.6.3",
+        "jest-cli": "^26.6.3",
+        "jest-config": "^26.6.3",
+        "prettier": "^2.2.1"
+    }
 }
