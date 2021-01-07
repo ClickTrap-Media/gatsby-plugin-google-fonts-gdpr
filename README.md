@@ -1,22 +1,21 @@
-# gatsby-plugin-google-fonts-gdpr
+# gatsby-plugin-klaro-google-fonts
 
 ## Description
 This is a fork of [gatsby-plugin-google-fonts](https://github.com/didierfranc/gatsby-plugin-google-fonts) that aims
-to be compliant with the GDPR if configured correctly.
-When using `gatsby-plugin-google-fonts-gdpr` you can define data attributes necessary that are necessary for the CMP (Consent Management Platform)
-that is used on your site. You can also define the initial type for the inserted `<link>`-tag if your CMP does not use `type="text/plain"` as the most CMPs
-do today.
+to be compatible with [KIProtect Klaro](https://github.com/kiprotect/klaro).
+The plugin appends the necessary data attributes to prevent the execution of the API call until the user grants the
+necessary consent.
 
 ## How to install
 
 ### Install the plugin through npm
-The installation of `gatsby-plugin-google-fonts-gdpr` is done the same way as you would install other plugins.
+The installation of `gatsby-plugin-klaro-google-fonts` is done the same way as you would install other plugins.
 Refer to [Using a plugin in your site](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/using-a-plugin-in-your-site/) for a detailed guide.
 Note that you need `npm` to use this plugin. You might also use another prefered package manager that you currently use.
 
-Run the following commandto install `gatsby-plugin-google-fonts-gdpr`:
+Run the following commandto install `gatsby-plugin-klaro-google-fonts`:
 ```bash
-npm install gatsby-plugin-google-fonts-gdpr
+npm install gatsby-plugin-klaro-google-fonts
 ```
 
 ### Load the plugin
@@ -28,7 +27,7 @@ module.exports = {
     plugins: [
         ...
         {
-            `gatsby-plugin-google-fonts-gdpr`,
+            `gatsby-plugin-klaro-google-fonts`,
             options: {
                 ...
             }
@@ -57,22 +56,77 @@ Provide the `font-display` property to set on the loaded font.
 
 Example value: `"swap"`
 
+### `disableKlaroCompatibility` (optional, default: false)
+Disable Klaro compatibility and always load the stylesheets using Googles API.
+
+Example value: true
+
+### `klaroName` (optional, default: "googlefonts")
+The name that should be set for the `data-name`-attribute that Klaro uses for the configuration
+of the tag.
+
+Example value: "googlefonts"
+
 ## Examples of usage
 
-#### Default URL & embedded configuration example
-Usage with the default URL for Klaro and an embedded configuration:
+#### Default usage
+Default usage (Name for Klaro configuration will be `googlefonts`):
 ```javascript
 module.exports = {
     plugins: [
         ...
         {
-            resolve: "gatsby-plugin-google-fonts-gdpr",
+            resolve: "gatsby-plugin-klaro-google-fonts",
             options: {
               fonts: [
                 `limelight`,
                 `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
               ],
               display: 'swap'
+            }
+        },
+        ...
+    ],
+};
+```
+
+#### Disable Klaro compatibility
+Disable Klaro compatibility (e. g. for development):
+```javascript
+module.exports = {
+    plugins: [
+        ...
+        {
+            resolve: "gatsby-plugin-klaro-google-fonts",
+            options: {
+              fonts: [
+                `limelight`,
+                `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
+              ],
+              display: 'swap',
+              disableKlaroCompatibility: true
+            }
+        },
+        ...
+    ],
+};
+```
+
+#### Custom service name
+Use a custom name to identify Google Fonts in your Klaro config:
+```javascript
+module.exports = {
+    plugins: [
+        ...
+        {
+            resolve: "gatsby-plugin-klaro-google-fonts",
+            options: {
+              fonts: [
+                `limelight`,
+                `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
+              ],
+              display: 'swap',
+              klaroName: "some-custom-name"
             }
         },
         ...
@@ -128,4 +182,4 @@ npm run test
 ```
 
 ## How to contribute
-You are welcome to contribute to `gatsby-plugin-google-fonts-gdpr`! Refer to Contributing for information about issues and code contributions.
+You are welcome to contribute to `gatsby-plugin-klaro-google-fonts`! Refer to Contributing for information about issues and code contributions.
