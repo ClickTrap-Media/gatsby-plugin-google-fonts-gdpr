@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for your interest in contributing to gatsby-plugin-klaro - but to keep everything organized, we need some guidelines and standards that apply to the project. We tried to keep those guidelines as short as possible and make it easy for new contributors to get started. Please read these guidelines carefully, to keep up with our issue, branching and pull request standards.
+Thank you for your interest in contributing to gatsby-plugin-klaro-google-fonts - but to keep everything organized, we need some guidelines and standards that apply to the project. We tried to keep those guidelines as short as possible and make it easy for new contributors to get started. Please read these guidelines carefully, to keep up with our issue, branching and pull request standards.
 
 ## Code of conduct
 
@@ -10,7 +10,7 @@ Dealing with questions, bugs and feature requests.
 If you have any questions, bugs or feature requests, feel free to open an issue. Note that you must use one of our issue templates that your issue is valid - valid issues will always retrieve the attention that is required to solve them. Before you create an issue, search for your subject and be sure to not create a duplicate. Always provide a clear and concise explanation of your matter of concern.
 Security issues.
 
-If you find some really serious security issue, please don't create a GitHub issue for it in the first line - it could put all users of gatsby-plugin-klaro into great risk. Send a mail to p.zarrad@outlook.de instead, to keep it structured you can simply copy our bug template into your mail.
+If you find some really serious security issue, please don't create a GitHub issue for it in the first line - it could put all users of gatsby-plugin-klaro-google-fonts into great risk. Send a mail to p.zarrad@outlook.de instead, to keep it structured you can simply copy our bug template into your mail.
 
 ## Contributing code
 
@@ -20,7 +20,7 @@ First time contributors.
 As a first time contributor, you might find it hard to find an issue that you can work on. To make it easier for you, some issues will be labeled as "good first issue". This type of issue can be often done with a few changes to the source code, which does not require a too deep knowledge of the projects source code.
 Process of a code contribution.
 
-The step by step process for code contributions to gatsby-plugin-klaro looks like the following:
+The step by step process for code contributions to gatsby-plugin-klaro-google-fonts looks like the following:
 
  - Choose an issue that you want to resolve (Create one if you want to implement something, but there is no issue for it)
  - Create a comment in that issue that you want to resolve it.
