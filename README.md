@@ -1,5 +1,11 @@
 # gatsby-plugin-klaro-google-fonts
 
+--------
+### IMPORTANT
+This project has been abandoned. Please consider using [gatsby-plugin-tagmanager](https://github.com/lazybytez/gatsby-plugin-tagmanager) instead to include Klaro into your project.
+
+--------
+
 ## Description
 This is a fork of [gatsby-plugin-google-fonts](https://github.com/didierfranc/gatsby-plugin-google-fonts) that aims
 to be compatible with [KIProtect Klaro](https://github.com/kiprotect/klaro).
